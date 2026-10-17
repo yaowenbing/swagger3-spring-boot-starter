@@ -1,0 +1,2 @@
+com.worm.swagger3.config.Swagger3ConfigAutoConfiguration
+com.worm.swagger3.config.LongPrecisionAutoConfiguration

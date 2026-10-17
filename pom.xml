@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.worm</groupId>
+    <artifactId>swagger3-spring-boot-starter</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>swagger3-spring-boot-starter</name>
+    <description>Spring Boot 2 接口文档 Starter：基于 springdoc-openapi + Knife4j，提供 OpenAPI 3 文档、接口分组、Long 精度处理与文档地址启动打印</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 为什么：本开源版本面向 JDK 8 基线（Spring Boot 2.7 / Spring 5.3 / javax 命名空间） —— 干什么：编译源码级别与字节码目标均为 Java 8 -->
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <spring-boot.version>2.7.18</spring-boot.version>
+        <!-- 为什么：Lombok 1.18.30 发布于 JDK 21 之前，在 JDK 21 的 javac 下注解处理器静默失效；1.18.34 起官方支持 JDK 8~21 全基线 —— 干什么：固定 lombok 版本保证 JDK 8 与 JDK 21 下注解处理均生效 -->
+        <lombok.version>1.18.34</lombok.version>
+        <!-- 为什么：knife4j-openapi3-spring-boot-starter 是 Boot 2.x（springdoc 1.6.x / javax）基线的对应构件，jakarta 变体仅适用于 Boot 3+ —— 干什么：固定 Knife4j 4.4.0 与 Boot 2.7 基线对齐 -->
+        <knife4j.version>4.4.0</knife4j.version>
+        <!-- 为什么：Spring 5.3 起 @Resource 所在的 javax.annotation-api 不再由 spring-context 传递，显式声明避免消费侧缺依赖 —— 干什么：固定 javax.annotation-api 版本 -->
+        <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 为什么：本项目独立发布，不依赖内部 BOM，直接导入 Spring Boot 官方 BOM 统一管理 spring-boot / jackson / starter-test 等版本 —— 干什么：以 import 方式引入 spring-boot-dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- springdoc-openapi + Knife4j UI 增强（Boot 2.7 基线，javax 命名空间） -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+            <version>${knife4j.version}</version>
+        </dependency>
+        <!-- javax.annotation：Boot 2 时代的注解命名空间 -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>${javax-annotation-api.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
