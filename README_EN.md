@@ -1,6 +1,6 @@
 # swagger3-spring-boot-starter
 
-A Spring Boot 2 API documentation starter built on springdoc-openapi + Knife4j: one dependency for OpenAPI 3 docs, endpoint grouping, Long precision handling, and startup address printing.
+A Spring Boot 4 API documentation starter built on springdoc-openapi + Knife4j: one dependency for OpenAPI 3 docs, endpoint grouping, Long precision handling, and startup address printing.
 
 中文 | [English](README_EN.md)
 
@@ -28,12 +28,12 @@ Integrating springdoc by hand means writing OpenAPI configuration, wiring Knife4
 
 | Dependency | Version |
 | --- | --- |
-| JDK | 8+ |
+| JDK | 17+ |
 | Maven | 3.6+ |
-| Spring Boot | 2.7.x |
-| Knife4j | 4.4.0 (transitively via the starter) |
+| Spring Boot | 4.0.6 |
+| Knife4j | 4.5.0 (`knife4j-openapi3-jakarta-spring-boot-starter`, transitively via the starter) |
 
-This repository targets the JDK 8 / Spring Boot 2.7 baseline; build output is Java 8 bytecode, ready to use in Spring Boot 2.x projects.
+This repository targets the JDK 17 / Spring Boot 4.0.6 baseline; build output is Java 17 bytecode, ready to use in Spring Boot 4.x projects.
 
 ## Quick Start
 
@@ -183,9 +183,9 @@ The switch is only read by `LongPrecisionAutoConfiguration`'s `@ConditionalOnPro
 
 Address printing relies on `WebServerInitializedEvent`, which fires only after a Servlet web application starts; the master switch `worm.swagger3.enabled` must also be `true` (default).
 
-### 4. How do I use this with Spring Boot 3 / the jakarta namespace?
+### 4. Does the current baseline already use the jakarta namespace?
 
-This repository is the open-source JDK 8 / Spring Boot 2.7 (javax) baseline, using `knife4j-openapi3-spring-boot-starter`. For the jakarta baseline (Spring Boot 3+), use the `knife4j-openapi3-jakarta-spring-boot-starter` variant and change `javax.*` references to `jakarta.*`.
+This repository itself is the JDK 17 / Spring Boot 4.0.6 (jakarta namespace) baseline, using `knife4j-openapi3-jakarta-spring-boot-starter` (Knife4j 4.5.0, springdoc 2.x), ready to use in Spring Boot 4.x projects with no namespace migration required.
 
 ## License
 

@@ -3,8 +3,8 @@ package com.worm.swagger3.service.impl;
 import com.worm.swagger3.service.IDocService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.boot.web.context.WebServerInitializedEvent;
+import org.springframework.boot.web.server.autoconfigure.ServerProperties;
+import org.springframework.boot.web.server.context.WebServerInitializedEvent;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;

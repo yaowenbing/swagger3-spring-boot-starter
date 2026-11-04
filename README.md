@@ -1,6 +1,6 @@
 # swagger3-spring-boot-starter
 
-Spring Boot 2 接口文档 Starter：基于 springdoc-openapi + Knife4j，一行依赖接入 OpenAPI 3 文档、接口分组、Long 精度处理与文档地址启动打印。
+Spring Boot 4 接口文档 Starter：基于 springdoc-openapi + Knife4j，一行依赖接入 OpenAPI 3 文档、接口分组、Long 精度处理与文档地址启动打印。
 
 [English](README_EN.md) | 中文
 
@@ -28,12 +28,12 @@ Spring Boot 2 接口文档 Starter：基于 springdoc-openapi + Knife4j，一行
 
 | 依赖 | 版本 |
 | --- | --- |
-| JDK | 8+ |
+| JDK | 17+ |
 | Maven | 3.6+ |
-| Spring Boot | 2.7.x |
-| Knife4j | 4.4.0（随 starter 传递引入） |
+| Spring Boot | 4.0.6 |
+| Knife4j | 4.5.0（`knife4j-openapi3-jakarta-spring-boot-starter`，随 starter 传递引入） |
 
-本仓库为 JDK 8 / Spring Boot 2.7 基线，编译产物为 Java 8 字节码，可直接用于 Spring Boot 2.x 项目。
+本仓库为 JDK 17 / Spring Boot 4.0.6 基线，编译产物为 Java 17 字节码，可直接用于 Spring Boot 4.x 项目。
 
 ## 快速开始
 
@@ -187,9 +187,9 @@ com.worm
 
 地址打印依赖 `WebServerInitializedEvent`，仅在 Web 应用（Servlet）启动完成后触发；同时总开关 `worm.swagger3.enabled` 必须为 `true`（默认）。
 
-### 5. 如何接入 Spring Boot 3 / jakarta 命名空间版本？
+### 5. 当前基线是否已使用 jakarta 命名空间？
 
-本仓库为 JDK 8 / Spring Boot 2.7（javax）基线的开源版本，使用 `knife4j-openapi3-spring-boot-starter`。jakarta 基线（Spring Boot 3+）请使用 `knife4j-openapi3-jakarta-spring-boot-starter` 对应变体，并将 `javax.*` 引用改为 `jakarta.*`。
+本仓库即为 JDK 17 / Spring Boot 4.0.6（jakarta 命名空间）基线，使用 `knife4j-openapi3-jakarta-spring-boot-starter`（Knife4j 4.5.0，springdoc 2.x 系），可直接用于 Spring Boot 4.x 项目，无需任何命名空间迁移。
 
 ## 许可证
 

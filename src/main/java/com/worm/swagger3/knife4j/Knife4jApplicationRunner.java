@@ -3,7 +3,7 @@ package com.worm.swagger3.knife4j;
 import com.worm.swagger3.service.IDocService;
 import com.worm.swagger3.properties.Swagger3Properties;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.web.context.WebServerInitializedEvent;
+import org.springframework.boot.web.server.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
 
 import java.util.Map;

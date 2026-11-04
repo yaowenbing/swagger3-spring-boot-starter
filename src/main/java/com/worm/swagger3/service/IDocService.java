@@ -1,6 +1,6 @@
 package com.worm.swagger3.service;
 
-import org.springframework.boot.web.context.WebServerInitializedEvent;
+import org.springframework.boot.web.server.context.WebServerInitializedEvent;
 
 import java.util.Map;
 

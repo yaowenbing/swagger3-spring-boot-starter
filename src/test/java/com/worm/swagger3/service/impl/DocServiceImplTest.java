@@ -4,9 +4,9 @@ import com.worm.StubObjectProvider;
 import com.worm.swagger3.service.IDocService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext;
-import org.springframework.boot.web.servlet.context.ServletWebServerInitializedEvent;
+import org.springframework.boot.web.server.autoconfigure.ServerProperties;
+import org.springframework.boot.web.server.servlet.context.AnnotationConfigServletWebServerApplicationContext;
+import org.springframework.boot.web.server.servlet.context.ServletWebServerInitializedEvent;
 import org.springframework.boot.web.server.WebServer;
 
 import java.util.LinkedHashMap;
@@ -30,7 +30,7 @@ class DocServiceImplTest {
     private ServletWebServerInitializedEvent eventWithPort(int port) {
         WebServer webServer = mock(WebServer.class);
         when(webServer.getPort()).thenReturn(port);
-        // 为什么：Boot 2.7 的 ServletWebServerInitializedEvent 构造器参数顺序为 (WebServer, context) —— 干什么：按 (webServer, context) 顺序构造
+        // 为什么：Boot 4 的 ServletWebServerInitializedEvent 构造器参数顺序为 (WebServer, context) —— 干什么：按 (webServer, context) 顺序构造
         return new ServletWebServerInitializedEvent(webServer, new AnnotationConfigServletWebServerApplicationContext());
     }
 

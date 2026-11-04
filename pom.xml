@@ -9,20 +9,17 @@
     <packaging>jar</packaging>
 
     <name>swagger3-spring-boot-starter</name>
-    <description>Spring Boot 2 接口文档 Starter：基于 springdoc-openapi + Knife4j，提供 OpenAPI 3 文档、接口分组、Long 精度处理与文档地址启动打印</description>
+    <description>Spring Boot 4 接口文档 Starter：基于 springdoc-openapi 2.x + Knife4j（jakarta），提供 OpenAPI 3 文档、接口分组、Long 精度处理与文档地址启动打印</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- 为什么：全仓基线统一到 JDK 17（Spring Boot 2.7 支持 JDK 17，javax 命名空间不变） —— 干什么：编译源码级别与字节码目标均为 Java 17 -->
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <spring-boot.version>2.7.18</spring-boot.version>
+        <!-- 为什么：全仓基线统一到 JDK 17（Spring Boot 4.0.6 要求 JDK 17+，jakarta 命名空间） —— 干什么：以 release=17 一次性约束源码级别、字节码目标与 JDK API 签名，防止误引高版本 API -->
+        <maven.compiler.release>17</maven.compiler.release>
+        <spring-boot.version>4.0.6</spring-boot.version>
         <!-- 为什么：Lombok 1.18.30 发布于 JDK 21 之前，在 JDK 21 的 javac 下注解处理器静默失效；1.18.34 起官方支持 JDK 8~21 全基线 —— 干什么：固定 lombok 版本保证 JDK 8 与 JDK 21 下注解处理均生效 -->
         <lombok.version>1.18.34</lombok.version>
-        <!-- 为什么：knife4j-openapi3-spring-boot-starter 是 Boot 2.x（springdoc 1.6.x / javax）基线的对应构件，jakarta 变体仅适用于 Boot 3+ —— 干什么：固定 Knife4j 4.4.0 与 Boot 2.7 基线对齐 -->
-        <knife4j.version>4.4.0</knife4j.version>
-        <!-- 为什么：Spring 5.3 起 @Resource 所在的 javax.annotation-api 不再由 spring-context 传递，显式声明避免消费侧缺依赖 —— 干什么：固定 javax.annotation-api 版本 -->
-        <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
+        <!-- 为什么：Knife4j 与 Boot 基线强绑定，Boot 4.0.6 基线（jakarta 命名空间、springdoc 2.x）使用 jakarta 变体坐标，knife4j-openapi3-jakarta-spring-boot-starter 4.5.0 为其 jakarta/springdoc 2.x 系版本 —— 干什么：固定 Knife4j 版本 -->
+        <knife4j.version>4.5.0</knife4j.version>
     </properties>
 
     <dependencyManagement>
@@ -58,17 +55,16 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- springdoc-openapi + Knife4j UI 增强（Boot 2.7 基线，javax 命名空间） -->
+        <!-- 为什么：springdoc-openapi 2.x + Knife4j UI 增强需显式引入避免消费侧缺依赖，Boot 4.0.6 基线（jakarta 命名空间）使用 jakarta 变体坐标 —— 干什么：引入 knife4j-openapi3-jakarta-spring-boot-starter -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>${knife4j.version}</version>
         </dependency>
-        <!-- javax.annotation：Boot 2 时代的注解命名空间 -->
+        <!-- 为什么：@Resource 所在的注解 API 需显式声明避免消费侧缺依赖 —— 干什么：引入 jakarta.annotation-api，版本由 spring-boot-dependencies 统一管理 -->
         <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>${javax-annotation-api.version}</version>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
     </dependencies>
 
