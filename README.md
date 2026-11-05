@@ -33,7 +33,7 @@ Spring Boot 4 接口文档 Starter：基于 springdoc-openapi + Knife4j，一行
 | Spring Boot | 4.0.6 |
 | Knife4j | 4.5.0（`knife4j-openapi3-jakarta-spring-boot-starter`，随 starter 传递引入） |
 
-本仓库为 JDK 17 / Spring Boot 4.0.6 基线，编译产物为 Java 17 字节码，可直接用于 Spring Boot 4.x 项目。
+本仓库为 JDK 21 / Spring Boot 4.0.6 基线，编译产物为 Java 21 字节码，可直接用于 Spring Boot 4.x 项目。
 
 ## 快速开始
 
@@ -189,7 +189,7 @@ com.worm
 
 ### 5. 当前基线是否已使用 jakarta 命名空间？
 
-本仓库即为 JDK 17 / Spring Boot 4.0.6（jakarta 命名空间）基线，使用 `knife4j-openapi3-jakarta-spring-boot-starter`（Knife4j 4.5.0，springdoc 2.x 系），可直接用于 Spring Boot 4.x 项目，无需任何命名空间迁移。
+本仓库即为 JDK 21 / Spring Boot 4.0.6（jakarta 命名空间）基线，使用 `knife4j-openapi3-jakarta-spring-boot-starter`（Knife4j 4.5.0，springdoc 2.x 系），可直接用于 Spring Boot 4.x 项目，无需任何命名空间迁移。
 
 ## 许可证
 

@@ -33,7 +33,7 @@ Integrating springdoc by hand means writing OpenAPI configuration, wiring Knife4
 | Spring Boot | 4.0.6 |
 | Knife4j | 4.5.0 (`knife4j-openapi3-jakarta-spring-boot-starter`, transitively via the starter) |
 
-This repository targets the JDK 17 / Spring Boot 4.0.6 baseline; build output is Java 17 bytecode, ready to use in Spring Boot 4.x projects.
+This repository targets the JDK 21 / Spring Boot 4.0.6 baseline; build output is Java 21 bytecode, ready to use in Spring Boot 4.x projects.
 
 ## Quick Start
 
@@ -185,7 +185,7 @@ Address printing relies on `WebServerInitializedEvent`, which fires only after a
 
 ### 4. Does the current baseline already use the jakarta namespace?
 
-This repository itself is the JDK 17 / Spring Boot 4.0.6 (jakarta namespace) baseline, using `knife4j-openapi3-jakarta-spring-boot-starter` (Knife4j 4.5.0, springdoc 2.x), ready to use in Spring Boot 4.x projects with no namespace migration required.
+This repository itself is the JDK 21 / Spring Boot 4.0.6 (jakarta namespace) baseline, using `knife4j-openapi3-jakarta-spring-boot-starter` (Knife4j 4.5.0, springdoc 2.x), ready to use in Spring Boot 4.x projects with no namespace migration required.
 
 ## License
 
